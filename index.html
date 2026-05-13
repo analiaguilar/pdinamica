@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I.E.S.T.P. Sigmund Freud</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#eef3f8;
+      color:#222;
+    }
+
+    header{
+      background:white;
+      padding:25px;
+      text-align:center;
+      border-bottom:5px solid #003366;
+    }
+
+    .encabezado{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .encabezado img{
+      width:120px;
+      height:120px;
+      object-fit:contain;
+    }
+
+    .encabezado h1{
+      color:#003366;
+      font-size:38px;
+    }
+
+    .encabezado p{
+      color:#555;
+      font-size:18px;
+      margin-top:8px;
+    }
+
+    nav{
+      background:#003366;
+      padding:15px;
+      text-align:center;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 20px;
+      font-weight:bold;
+    }
+
+    .contenedor{
+      width:90%;
+      max-width:1100px;
+      margin:30px auto;
+    }
+
+    .bienvenida{
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 8px #ccc;
+      margin-bottom:25px;
+    }
+
+    .bienvenida h2{
+      color:#003366;
+      margin-bottom:8px;
+    }
+
+    .contenido{
+      display:grid;
+      grid-template-columns:1fr 2fr;
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 0 8px #ccc;
+    }
+
+    .card h2{
+      color:#003366;
+      margin-bottom:15px;
+    }
+
+    label{
+      font-weight:bold;
+      display:block;
+      margin-top:12px;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+      border:1px solid #ccc;
+      border-radius:6px;
+    }
+
+    button{
+      width:100%;
+      margin-top:18px;
+      padding:12px;
+      background:#003366;
+      color:white;
+      border:none;
+      border-radius:6px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#0055aa;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+
+    th{
+      background:#003366;
+      color:white;
+      padding:12px;
+    }
+
+    td{
+      border:1px solid #ccc;
+      padding:10px;
+      text-align:center;
+    }
+
+    .aprobado{
+      color:green;
+      font-weight:bold;
+    }
+
+    .desaprobado{
+      color:red;
+      font-weight:bold;
+    }
+
+    .estadisticas{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-top:25px;
+    }
+
+    .dato{
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      text-align:center;
+      box-shadow:0 0 8px #ccc;
+    }
+
+    .dato h3{
+      color:#003366;
+      font-size:30px;
+    }
+
+    footer{
+      background:#003366;
+      color:white;
+      text-align:center;
+      padding:18px;
+      margin-top:35px;
+    }
+
+    @media(max-width:768px){
+      .contenido{
+        grid-template-columns:1fr;
+      }
+
+      .estadisticas{
+        grid-template-columns:1fr;
+      }
+
+      nav a{
+        display:block;
+        margin:10px 0;
+      }
+
+      .encabezado h1{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="encabezado">
+      <img src="logo.png" alt="Logo I.E.S.T.P. Sigmund Freud">
+
+      <div>
+        <h1>I.E.S.T.P. SIGMUND FREUD</h1>
+        <p>Instituto de Educación Superior Tecnológico Privado</p>
+        <p><em>“Todos, por el bien de todos”</em></p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Estudiantes</a>
+    <a href="#">Reportes</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <main class="contenedor">
+
+    <section class="bienvenida">
+      <h2>Sistema Web Dinámico de Registro de Estudiantes</h2>
+      <p>Permite registrar estudiantes, cursos y notas, mostrando automáticamente si están aprobados o desaprobados.</p>
+    </section>
+
+    <section class="contenido">
+
+      <div class="card">
+        <h2>Registrar Estudiante</h2>
+
+        <label>Nombre del estudiante</label>
+        <input type="text" id="nombre" placeholder="Ingrese el nombre completo">
+
+        <label>Curso</label>
+        <input type="text" id="curso" placeholder="Ingrese el curso">
+
+        <label>Nota</label>
+        <input type="number" id="nota" placeholder="Ingrese la nota">
+
+        <button onclick="registrar()">Registrar</button>
+      </div>
+
+      <div class="card">
+        <h2>Lista de Estudiantes</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>Curso</th>
+              <th>Nota</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+
+          <tbody id="tablaEstudiantes"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <section class="estadisticas">
+      <div class="dato">
+        <h3 id="total">0</h3>
+        <p>Total de estudiantes</p>
+      </div>
+
+      <div class="dato">
+        <h3 id="aprobados">0</h3>
+        <p>Estudiantes aprobados</p>
+      </div>
+
+      <div class="dato">
+        <h3 id="desaprobados">0</h3>
+        <p>Estudiantes desaprobados</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 - I.E.S.T.P. Sigmund Freud
+  </footer>
+
+  <script>
+    let contador = 1;
+    let total = 0;
+    let aprobados = 0;
+    let desaprobados = 0;
+
+    function registrar(){
+      let nombre = document.getElementById("nombre").value;
+      let curso = document.getElementById("curso").value;
+      let nota = document.getElementById("nota").value;
+
+      if(nombre === "" || curso === "" || nota === ""){
+        alert("Complete todos los campos");
+        return;
+      }
+
+      let estado = nota >= 13 ? "Aprobado" : "Desaprobado";
+      let clase = nota >= 13 ? "aprobado" : "desaprobado";
+
+      let fila = `
+        <tr>
+          <td>${contador}</td>
+          <td>${nombre}</td>
+          <td>${curso}</td>
+          <td>${nota}</td>
+          <td class="${clase}">${estado}</td>
+        </tr>
+      `;
+
+      document.getElementById("tablaEstudiantes").innerHTML += fila;
+
+      contador++;
+      total++;
+
+      if(nota >= 13){
+        aprobados++;
+      }else{
+        desaprobados++;
+      }
+
+      document.getElementById("total").textContent = total;
+      document.getElementById("aprobados").textContent = aprobados;
+      document.getElementById("desaprobados").textContent = desaprobados;
+
+      document.getElementById("nombre").value = "";
+      document.getElementById("curso").value = "";
+      document.getElementById("nota").value = "";
+    }
+  </script>
+
+</body>
+</html>
